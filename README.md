@@ -1,7 +1,5 @@
 # Image Segmentation
 
-> Alli Khadga Jyoth - M23CSA003
-
 ## Ratio Cut Segmentaion
 
 ### Steps:
@@ -15,25 +13,55 @@
 7. Take eigenvectors corresponding to $K^{th}$ smallest eigenvalue.
 8. Perform Clustering on K.
 
-> Please See Appendix Section for exact details.
+> Please See [Appendix](#appendix) Section for exact details.
 
-### Segmentation Results
+## Segmentation Results  - 3 Clusters
 
-#### Image 1:
+### Image 1:
 
 ![1713907993621](image/M23CSA003/1713907993621.png)
 
-![1713907884042](image/M23CSA003/1713907884042.png)![1713907894137](image/M23CSA003/1713907894137.png)![1713907944518](image/M23CSA003/1713907944518.png)![1713907949725](image/M23CSA003/1713907949725.png)![1713907955081](image/M23CSA003/1713907955081.png)
+#### Ratio Cut
 
-#### Image 2:
+![1713980756925](image/M23CSA003/1713980756925.png)![1713980759898](image/M23CSA003/1713980759898.png)![1713980762556](image/M23CSA003/1713980762556.png)![1713980765036](image/M23CSA003/1713980765036.png)![1713980767582](image/M23CSA003/1713980767582.png)
+
+### KMeans Clustering:
+
+![1713908114710](image/M23CSA003/1713908114710.png)
+
+### Image 2:
 
 ![1713908009339](image/M23CSA003/1713908009339.png)
 
+#### Ratio Cut
+
 ![1713908027281](image/M23CSA003/1713908027281.png)![1713908031799](image/M23CSA003/1713908031799.png)![1713908036127](image/M23CSA003/1713908036127.png)![1713908040339](image/M23CSA003/1713908040339.png)![1713908044462](image/M23CSA003/1713908044462.png)
 
-## KMeans Clustering:
+### KMeans Clustering:
 
-![1713908114710](image/M23CSA003/1713908114710.png)![1713908120214](image/M23CSA003/1713908120214.png)
+![1713908120214](image/M23CSA003/1713908120214.png)
+
+## Segmentation Results - 6 Clusters
+
+### Image 1
+
+#### Ratio Cut
+
+![1713979991179](image/M23CSA003/1713979991179.png)![1713979995070](image/M23CSA003/1713979995070.png)![1713979998515](image/M23CSA003/1713979998515.png)![1713980001178](image/M23CSA003/1713980001178.png)![1713980003798](image/M23CSA003/1713980003798.png)
+
+### KMeans Clustering:
+
+![1713980065485](image/M23CSA003/1713980065485.png)
+
+### Image 2:
+
+#### Ratio Cut
+
+![1713980190116](image/M23CSA003/1713980190116.png)![1713980193099](image/M23CSA003/1713980193099.png)![1713980195474](image/M23CSA003/1713980195474.png)![1713980197949](image/M23CSA003/1713980197949.png)![1713980201605](image/M23CSA003/1713980201605.png)
+
+### KMeans Clustering:
+
+![1713980069326](image/M23CSA003/1713980069326.png)
 
 # Appendix
 
@@ -49,7 +77,7 @@
 
    ![refinement](https://raw.githubusercontent.com/wq2012/SpectralCluster/master/resources/refinement.png)
 
-The Parameters for each of the operations is dependent on the problem at hand. 
+The Parameters for each of the operations is dependent on the problem at hand.
 
 # References
 
