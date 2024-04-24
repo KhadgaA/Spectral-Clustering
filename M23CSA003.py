@@ -364,6 +364,9 @@ np.random.shuffle(experiments)
 print(f"Total Possible Experiments:  {len(experiments)}")
 
 
+# %% [markdown]
+# ## 3 - clusters
+
 # %%
 
 images_dir = "./"
@@ -394,7 +397,42 @@ for image_path in images_list:
 
 
 # %% [markdown]
+# ## 6 - Clusters
+
+# %%
+
+images_dir = "./"
+images_list = [
+    os.path.join(images_dir, i)
+    for i in os.listdir(images_dir)
+    if (i.endswith(".jpg") or i.endswith(".png"))
+]
+
+run_experiments = 5
+print(f"Running {run_experiments} experiments on each image")
+resize_height = 64
+resize_width = 64
+
+for image_path in images_list:
+    print(f"Image Path: {image_path}")
+    image = Image.open(image_path)
+    plt.imshow(image)
+    plt.show()
+    image_resized = image.resize((resize_width, resize_height))
+    image_resized = np.asarray(image_resized).astype(float) / 255.0
+    for i in range(run_experiments):
+        print(f"Experiment {i+1}")
+        experiment = experiments[i]
+        print(experiment)
+        RatioCut(image=image_resized, n_clusters=6, **experiment)
+        print("\n")
+
+
+# %% [markdown]
 # # KMeans Clustering
+
+# %% [markdown]
+# ## 3 - Clusters
 
 # %%
 
@@ -436,3 +474,49 @@ for image_path in images_list:
     plt.imshow(image_resized_clustered)
     plt.title("Clustered Image, K = " + str(n_clusters))
     plt.show()
+
+# %% [markdown]
+# ## 6 - Clusters
+
+# %%
+
+images_dir = "./"
+images_list = [
+    os.path.join(images_dir, i)
+    for i in os.listdir(images_dir)
+    if (i.endswith(".jpg") or i.endswith(".png"))
+]
+
+resize_height = 64
+resize_width = 64
+
+for image_path in images_list:
+    print(f"Image Path: {image_path}")
+    image = Image.open(image_path)
+    plt.imshow(image)
+    plt.show()
+    image_resized = image.resize((resize_width, resize_height))
+    image_resized = np.asarray(image_resized).astype(float) / 255.0
+
+    # Kmeans Clustering
+    n_clusters = 6
+    kmeans = KMeans(
+        n_clusters=n_clusters, random_state=42, n_init="auto", init="k-means++"
+    ).fit(image_resized.reshape(-1, 3))
+    clusters = kmeans.labels_.reshape(resize_height, resize_width)
+    image_resized_clustered = np.zeros_like(image_resized)
+    for i in range(n_clusters):
+        image_resized_clustered[clusters == i] = image_resized[clusters == i].mean(
+            axis=0
+        )
+
+    plt.figure(figsize=(8, 8))
+    plt.subplot(1, 2, 1)
+    plt.imshow(image_resized)
+    plt.title("Original Image")
+    plt.subplot(1, 2, 2)
+    plt.imshow(image_resized_clustered)
+    plt.title("Clustered Image, K = " + str(n_clusters))
+    plt.show()
+
+# %%
